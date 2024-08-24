@@ -1,24 +1,21 @@
-public class LightDimCommand implements Command{
-    private Light light1;
+public class LightDimCommand implements Command {
+    private Light light;
     private int level;
-    private int beforeLevel;
+    private int previousLevel;
 
-    public LightDimCommand(Light light1, int level){
-        this.light1 = light1;
+    public LightDimCommand(Light light, int level) {
+        this.light = light;
         this.level = level;
     }
 
     @Override
-    public void execute(){
-        if (light1 instanceof KitchenRoomLight){
-            beforeLevel = ((KitchenRoomLight) light1).getBrightnessFull();
-        } else if (light1 instanceof LivingRoomLight){
-            beforeLevel = ((LivingRoomLight) light1).getBrightnessFull();
-        }
+    public void execute() {
+        previousLevel = light.getBrightness();
+        light.dim(level);
     }
 
     @Override
-    public void undo(){
-        light1.dim(beforeLevel);
+    public void undo() {
+        light.dim(previousLevel);
     }
 }

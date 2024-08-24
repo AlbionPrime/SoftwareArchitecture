@@ -1,31 +1,31 @@
-public class LivingRoomLight implements Light{
-    private int brightnessLevel;
+public class LivingRoomLight implements Light {
+    private int brightness;
 
     @Override
-    public void on(){
-        brightnessLevel = 100;
-        System.out.println("Living Room light is ON at full brightness.");
+    public void on() {
+        brightness = 100;
+        System.out.println("Living room light is ON at full brightness.");
     }
 
     @Override
-    public void off(){
-        brightnessLevel = 0;
-        System.out.println("Living Room light is OFF.");
+    public void off() {
+        brightness = 0;
+        System.out.println("Living room light is OFF.");
     }
 
     @Override
-    public void dim(int level){
-        if (level<0){
-            brightnessLevel = 0;
-        } else if (level>100){
-            brightnessLevel = 100;
+    public void dim(int level) {
+        if (level < 0) {
+            brightness = 0;
+        } else if (level > 100) {
+            brightness = 100;
         } else {
-            brightnessLevel = level;
+            brightness = level;
         }
-        System.out.println("Living Room light dimmed to "+brightnessLevel+"%");
+        System.out.println("Living room light dimmed to " + brightness + "%.");
     }
 
-    public int getBrightnessFull(){
-        return brightnessLevel;
+    public int getBrightness() {
+        return brightness;
     }
 }

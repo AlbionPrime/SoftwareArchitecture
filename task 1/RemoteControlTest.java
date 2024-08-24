@@ -13,7 +13,7 @@ public class RemoteControlTest {
         LightDimCommand livingRoomLightDim = new LightDimCommand(livingRoomLight,30);
 
         remoteControl.setCommand(0, kitchenLightOn, kitchenLightOff);
-        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        remoteControl.setCommand(1, livingRoomLightOn, livingRoomLightOff);
 
         remoteControl.pressOnButton(0);
         remoteControl.pressOffButton(0);

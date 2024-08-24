@@ -3,4 +3,5 @@ public interface Light {
     void off();
     void dim(int level);
 
+    int getBrightness();
 }

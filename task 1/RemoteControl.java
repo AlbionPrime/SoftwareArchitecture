@@ -1,45 +1,45 @@
 public class RemoteControl {
     private Command[] onCommands;
     private Command[] offCommands;
-    private Command beforeCommand;
-    
-    public RemoteControl(int number){
-        onCommands = new Command[number];
-        offCommands = new Command[number];
-        beforeCommand = null;
+    private Command lastCommand;
+
+    public RemoteControl(int numberOfSlots) {
+        onCommands = new Command[numberOfSlots];
+        offCommands = new Command[numberOfSlots];
+        lastCommand = null;
     }
-    
-    public void setCommand(int place, Command onCommands, Command offCommands){
-        if (place < 0 || place >= onCommands.length){
+
+    public void setCommand(int slot, Command onCommand, Command offCommand) {
+        if (slot < 0 || slot >= onCommands.length) {
             System.out.println("Invalid slot number.");
             return;
         }
-        onCommands[place] = onCommands;
-        offCommands[place] = offCommands;
+        onCommands[slot] = onCommand;
+        offCommands[slot] = offCommand;
     }
 
-    public void pressOnButton(int place){
-        if (place < 0 || place >= onCommands.length || onCommands[place] == null){
+    public void pressOnButton(int slot) {
+        if (slot < 0 || slot >= onCommands.length || onCommands[slot] == null) {
             System.out.println("No command is set for this slot.");
             return;
         }
-        onCommands[place].execute();
-        beforeCommand = onCommands[place];
+        onCommands[slot].execute();
+        lastCommand = onCommands[slot];
     }
 
-    public void pressOffButton(int place){
-        if (place < 0 || place >= offCommands.length || offCommands[place] == null){
+    public void pressOffButton(int slot) {
+        if (slot < 0 || slot >= offCommands.length || offCommands[slot] == null) {
             System.out.println("No command is set for this slot.");
             return;
         }
-        offCommands[place].execute();
-        beforeCommand = offCommands[place];
+        offCommands[slot].execute();
+        lastCommand = offCommands[slot];
     }
 
-    public void pressUndoButton(){
-        if (beforeCommand != null){
-            beforeCommand.undo();
-            beforeCommand = null;
+    public void pressUndoButton() {
+        if (lastCommand != null) {
+            lastCommand.undo();
+            lastCommand = null;
         } else {
             System.out.println("No command to undo.");
         }

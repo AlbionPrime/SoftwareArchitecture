@@ -1,17 +1,17 @@
-public class LightOnCommand implements Command{
-    private Light light1;
+public class LightOnCommand implements Command {
+    private Light light;
 
-    public LightOnCommand(Light light1){
-        this.light1 = light1;
+    public LightOnCommand(Light light) {
+        this.light = light;
     }
 
     @Override
-    public void execute(){
-        light1.on();
+    public void execute() {
+        light.on();
     }
 
     @Override
-    public void undo(){
-        light1.off();
+    public void undo() {
+        light.off();
     }
 }
